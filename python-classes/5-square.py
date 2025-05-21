@@ -32,5 +32,5 @@ class Square:
         if self.__size == 0:
             print()
         else:
-            for _ in range(self.__size):  # Répète size fois
-                print("#" * self.__size)  # Affiche une ligne de size caractères
+            for _ in range(self.__size):
+                print("#" * self.__size)
