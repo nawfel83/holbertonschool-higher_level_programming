@@ -6,7 +6,6 @@ Simple Flask API for user management.
 
 from flask import Flask, jsonify, request
 
-
 app = Flask(__name__)
 
 
@@ -65,4 +64,3 @@ def add_user():
 if __name__ == '__main__':
     """Run the Flask app."""
     app.run(debug=True)
-    
