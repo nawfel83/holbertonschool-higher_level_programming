@@ -1,15 +1,20 @@
 #!/usr/bin/python3
+"""Simple HTTP server with basic API endpoints."""
+
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
 class SimpleAPIHandler(BaseHTTPRequestHandler):
+    """Handler for simple API endpoints."""
 
     def _set_headers(self, status_code=200, content_type="text/plain"):
+        """Set HTTP headers for the response."""
         self.send_response(status_code)
         self.send_header("Content-type", content_type)
         self.end_headers()
 
     def do_GET(self):
+        """Handle GET requests for different API endpoints."""
         if self.path == "/":
             self._set_headers()
             self.wfile.write(b"Hello, this is a simple API!")
@@ -35,6 +40,7 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
             self.wfile.write(json.dumps(message).encode('utf-8'))
 
 def run(server_class=HTTPServer, handler_class=SimpleAPIHandler, port=8000):
+    """Start the HTTP server with the given handler and port."""
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
     print(f"Starting http server on port {port}...")
@@ -46,3 +52,4 @@ def run(server_class=HTTPServer, handler_class=SimpleAPIHandler, port=8000):
 
 if __name__ == "__main__":
     run()
+    
